@@ -1,5 +1,7 @@
 import { Box, Flex, Text, Spacer, Tag, Button, Icon } from "@chakra-ui/react";
 import { HiCalendar } from "react-icons/hi";
+import dayjs from "dayjs";
+import "dayjs/locale/en";
 
 export function LaunchItem(launch) {
   return (
@@ -19,13 +21,13 @@ export function LaunchItem(launch) {
       </Flex>
 
       <Flex align="center">
-        <Icon as={HiCalendar} size="20px" color="gray.500" />
-        <Text fontSize="sm" ml={1} color="gray.500">
-          {launch.launch_date_local.split("T")[0]}
+        <Icon as={HiCalendar} color="gray.500" />
+        <Text fontSize="sm" ml={2} color="gray.500">
+          {dayjs(launch.launch_date_local).locale("en").format("MMMM DD, YYYY")}
         </Text>
       </Flex>
 
-      <Button colorScheme="purple" mt={4}>
+      <Button mt={4} colorScheme="purple">
         Launch Details
       </Button>
     </Box>
