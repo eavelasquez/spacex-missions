@@ -39,7 +39,10 @@ export function LaunchDetails() {
 
             <Flex>
               <Text>
-                <strong>Rocket:</strong> {launch.rocket.rocket_name}
+                <strong>Rocket: </strong>
+                <Link to={`/rocket/${launch.rocket?.rocket_id}`}>
+                  {launch.rocket.rocket_name}
+                </Link>
               </Text>
             </Flex>
 
