@@ -1,6 +1,6 @@
 # SpaceX Missions
 
-This is an application made in React that consumes the SpaceX API.
+This is an application made in React that consumes the [SpaceX API](https://github.com/r-spacex/SpaceX-API).
 
 ![WebApp](./docs/app.png)
 
