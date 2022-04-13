@@ -1,7 +1,7 @@
-import { Box, Flex, Text, Spacer, Tag, Button, Icon } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import { HiCalendar } from "react-icons/hi";
+import { Box, Flex, Text, Spacer, Tag, Button, Icon } from "@chakra-ui/react";
 import dayjs from "dayjs";
-import "dayjs/locale/en";
 
 export function LaunchItem(launch) {
   return (
@@ -13,7 +13,7 @@ export function LaunchItem(launch) {
         <Spacer />
         <Tag
           p={2}
-          size="sm"
+          size="lg"
           colorScheme={launch.launch_success ? "green" : "red"}
         >
           {launch.launch_success ? "Success" : "Failure"}
@@ -27,9 +27,11 @@ export function LaunchItem(launch) {
         </Text>
       </Flex>
 
-      <Button mt={4} colorScheme="purple">
-        Launch Details
-      </Button>
+      <Link to={`/launch/${launch.flight_number}`}>
+        <Button mt={4} colorScheme="purple">
+          Launch Details
+        </Button>
+      </Link>
     </Box>
   );
 }

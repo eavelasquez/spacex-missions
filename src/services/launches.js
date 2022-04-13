@@ -16,14 +16,14 @@ export async function getAllLaunches() {
 
 /**
  * @description - This function is used to get launch by flight number
- * @param {*} flightNumber
+ * @param {number} flightNumber
  * @returns {Promise}
  */
 export async function getLaunchByFlightNumber(flightNumber) {
   try {
     const response = await fetch(`${API_URL}/launches/${flightNumber}`);
     const data = await response.json();
-    return data;
+    return data.error ? null : data;
   } catch (error) {
     console.error(error);
   }

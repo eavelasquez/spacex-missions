@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 
 import logo from "./assets/spacex-logo.png";
 import { LaunchList } from "./components/LaunchList";
+import { LaunchDetails } from "./components/LaunchDetails";
 
 export function App() {
   return (
@@ -10,6 +11,7 @@ export function App() {
       <Image src={logo} width={300} m={4} alt="SpaceX" />
       <Routes>
         <Route path="/" element={<LaunchList />} />
+        <Route path="launch/:flightNumber" element={<LaunchDetails />} />
       </Routes>
     </>
   );
