@@ -1,4 +1,4 @@
-const API_URL = "https://api.spacexdata.com/v3";
+import { API_URL } from ".";
 
 /**
  * @description - This function is used to get all the launches
