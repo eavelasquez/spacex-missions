@@ -1,4 +1,5 @@
 import { Box, Flex, Text, Spacer, Tag, Heading, Image } from "@chakra-ui/react";
+import { HiCalendar } from "react-icons/hi";
 import { useState, useEffect } from "react";
 import logo from "./assets/spacex-logo.png";
 import * as API from "./services/launches";
@@ -43,6 +44,11 @@ export function App() {
                   <Tag p={2} size="sm" colorScheme={launch.launch_success ? "green" : "red"}>
                     {launch.launch_success ? "Success" : "Failure"}
                   </Tag>
+                </Flex>
+
+                <Flex align="center">
+                  <HiCalendar />
+                  <Text fontSize="lg" ml={1}>{launch.launch_date_local.split("T")[0]}</Text>
                 </Flex>
               </Box>
             ))}
