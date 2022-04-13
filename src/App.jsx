@@ -1,39 +1,16 @@
-import { Heading, Image } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
-import * as API from "./services/launches";
+import { Image } from "@chakra-ui/react";
+import { Routes, Route } from "react-router-dom";
+
 import logo from "./assets/spacex-logo.png";
-import { LaunchItem } from "./components/LaunchItem";
+import { LaunchList } from "./components/LaunchList";
 
 export function App() {
-  const [launches, setLaunches] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    API.getAllLaunches()
-      .then((data) => {
-        setLaunches(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
   return (
     <>
-      <Image src={logo} width={300} m={4} alt="Spacex" />
-      <Heading align="center" as="h1" size="lg" m={4}>
-        SpaceX Launches
-      </Heading>
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        <section>
-          {launches.map((launch) => (
-            <LaunchItem key={launch.flight_number} {...launch} />
-          ))}
-        </section>
-      )}
+      <Image src={logo} width={300} m={4} alt="SpaceX" />
+      <Routes>
+        <Route path="/" element={<LaunchList />} />
+      </Routes>
     </>
   );
 }
