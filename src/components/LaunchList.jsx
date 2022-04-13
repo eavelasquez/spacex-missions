@@ -16,7 +16,7 @@ export function LaunchList() {
       <Heading align="center" as="h1" size="lg" m={4}>
         SpaceX Launches
       </Heading>
-      {launches.length === 0 ? (
+      {!launches?.length ? (
         <p>Loading...</p>
       ) : (
         <section>
