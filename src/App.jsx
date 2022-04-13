@@ -1,8 +1,8 @@
-import { Box, Flex, Text, Spacer, Tag, Heading, Image } from "@chakra-ui/react";
-import { HiCalendar } from "react-icons/hi";
+import { Heading, Image } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
-import logo from "./assets/spacex-logo.png";
 import * as API from "./services/launches";
+import logo from "./assets/spacex-logo.png";
+import { LaunchItem } from "./components/LaunchItem";
 
 export function App() {
   const [launches, setLaunches] = useState([]);
@@ -25,35 +25,15 @@ export function App() {
       <Heading align="center" as="h1" size="lg" m={4}>
         SpaceX Launches
       </Heading>
-              {loading ? (
-          <p>Loading...</p>
-        ) : (
-          <section>
-            {launches.map((launch) => (
-              <Box
-                bg="gray.100"
-                p={4}
-                m={4}
-                borderRadius="lg"
-              >
-                <Flex>
-                  <Text fontSize="2xl">
-                    Mission <strong>{launch.mission_name}</strong> ({launch.launch_year})
-                  </Text>
-                  <Spacer />
-                  <Tag p={2} size="sm" colorScheme={launch.launch_success ? "green" : "red"}>
-                    {launch.launch_success ? "Success" : "Failure"}
-                  </Tag>
-                </Flex>
-
-                <Flex align="center">
-                  <HiCalendar />
-                  <Text fontSize="lg" ml={1}>{launch.launch_date_local.split("T")[0]}</Text>
-                </Flex>
-              </Box>
-            ))}
-          </section>
-        )}
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <section>
+          {launches.map((launch) => (
+            <LaunchItem key={launch.flight_number} {...launch} />
+          ))}
+        </section>
+      )}
     </>
   );
 }
